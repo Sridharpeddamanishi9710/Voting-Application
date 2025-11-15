@@ -1,0 +1,81 @@
+.edit-candidate-card {
+  max-width: 390px;
+  margin: 44px auto;
+  background: linear-gradient(114deg, #e3f2fd 80%, #ede7f6 100%);
+  padding: 34px 21px 20px 21px;
+  border-radius: 28px;
+  box-shadow: 0 9px 35px #2979ff22, 0 3px 10px #512da822;
+  backdrop-filter: blur(4px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: box-shadow .19s;
+}
+.edit-candidate-card h3 {
+  text-align: center;
+  color: #512da8;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: .9px;
+  margin-bottom: 19px;
+}
+.edit-candidate-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.edit-candidate-form input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 7px;
+  border: 1px solid #b2becd;
+  background: #e3f2fd;
+  font-size: 1.09rem;
+  transition: border-color .17s;
+}
+.edit-candidate-form input:focus {
+  outline: none;
+  border-color: #512da8;
+}
+.edit-candidate-btn {
+  background: linear-gradient(97deg, #1976d2 60%, #512da8 100%);
+  color: #fff;
+  border-radius: 9px;
+  font-size: 1.06rem;
+  padding: 10px 0;
+  border: none;
+  font-weight: 600;
+  margin-top: 3px;
+  transition: background .18s;
+  width: 100%;
+  cursor: pointer;
+  box-shadow: 0 2px 15px #1976d228;
+  letter-spacing: .7px;
+}
+.edit-candidate-btn:disabled {
+  background: #bdbdbd;
+  cursor: not-allowed;
+}
+.edit-candidate-btn:hover:not(:disabled) {
+  background: linear-gradient(97deg, #512da8 60%, #1976d2 100%);
+}
+.edit-candidate-msg {
+  color: #1976d2;
+  margin-top: 8px;
+  text-align: center;
+  font-weight: 500;
+}
+.edit-candidate-error {
+  color: #d32f2f;
+  margin-top: 8px;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* Responsive card */
+@media (max-width: 500px) {
+  .edit-candidate-card { padding: 15px 5px 13px 5px; border-radius: 12px; }
+  .edit-candidate-form input { padding: 9px 8px; border-radius: 5px; font-size: .97rem;}
+  .edit-candidate-btn { padding: 8px 0; font-size: .96rem; }
+}

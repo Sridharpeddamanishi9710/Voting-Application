@@ -1,0 +1,26 @@
+/* Animated video-like gradient background for all pages */
+body, #root {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.animated-bg {
+  position: fixed;
+  z-index: -1;
+  top: 0; left: 0; right: 0; bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(130deg, #512da8 30%, #2979ff 55%, #ede7f6 90%);
+  background-size: 200% 200%;
+  animation: gradientWave 12s ease-in-out infinite;
+}
+
+@keyframes gradientWave {
+  0%,100% { background-position: 0% 50%; }
+  50%     { background-position: 100% 50%; }
+}
+
+/* Your card/box containers stay above with position: relative or default */

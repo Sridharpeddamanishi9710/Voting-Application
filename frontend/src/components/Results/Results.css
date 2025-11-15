@@ -1,0 +1,93 @@
+.results-container {
+  max-width: 420px;
+  margin: 32px auto;
+  background: #fff;
+  padding: 28px 17px 22px 17px;
+  border-radius: 16px;
+  box-shadow: 0 7px 35px #512da811, 0 2px 8px #2979ff10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.results-container h2 {
+  color: #512da8;  /* deep purple */
+  text-align: center;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+.no-results {
+  color: #757575;
+  text-align: center;
+  margin-bottom: 14px;
+  font-style: italic;
+}
+
+.results-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 24px;
+}
+
+.results-card {
+  background: linear-gradient(97deg, #e3f2fd 70%, #ede7f6 100%);
+  border-radius: 9px;
+  box-shadow: 0 2px 12px #2979ff22;
+  padding: 15px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  opacity: 0;
+  animation: fadeInUp .6s cubic-bezier(.27,.7,.4,1) forwards;
+}
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(32px); }
+  60% { opacity: 1; transform: translateY(-4px);}
+  100% { opacity: 1; transform: translateY(0); }
+}
+.result-party {
+  font-weight: 700;
+  color: #1976d2; /* blue accent */
+  font-size: 1.04rem;
+  letter-spacing: .6px;
+}
+.result-votes {
+  background: #512da8; /* purple background */
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 14px;
+  font-size: 0.94rem;
+  font-weight: 500;
+}
+
+.results-nav {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  margin-top: 16px;
+  justify-content: center;
+}
+.results-nav button {
+  padding: 8px 20px;
+  background: #2979ff; /* blue button */
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 9px #2979ff22;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: background .16s;
+}
+.results-nav button:hover {
+  background: #1976d2;
+}
+
+/* Responsive for mobile */
+@media (max-width: 550px) {
+  .results-container { padding: 10px 4px; border-radius: 7px; }
+  .results-list { gap: 8px;}
+  .results-card { padding: 10px 7px; border-radius: 7px; }
+  .results-nav button { padding: 8px 11px; font-size: .98rem; }
+}

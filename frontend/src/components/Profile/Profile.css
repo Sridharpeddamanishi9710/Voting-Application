@@ -1,0 +1,112 @@
+.profile-container {
+  max-width: 420px;
+  margin: 32px auto;
+  background: #fff;
+  padding: 28px 20px 22px 20px;
+  border-radius: 16px;
+  box-shadow: 0 7px 35px #512da811, 0 2px 8px #1976d211;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.profile-container h3 {
+  text-align: center;
+  color: #512da8;
+  margin-bottom: 22px;
+  letter-spacing: 1px;
+}
+.profile-field {
+  margin-bottom: 10px;
+  color: #383c47;
+  font-size: 1rem;
+}
+.profile-field strong {
+  color: #1976d2;
+  font-weight: 600;
+  margin-right: 8px;
+}
+
+.profile-actions {
+  margin-top: 22px; /* for the change password area */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.profile-actions button {
+  background: #1976d2;
+  color: #fff;
+  border-radius: 7px;
+  font-size: 1rem;
+  padding: 10px 0;
+  border: none;
+  font-weight: 500;
+  margin-bottom: 2px;
+  transition: background .17s;
+  width: 100%;
+  cursor: pointer;
+  box-shadow: 0 2px 11px #1976d233;
+}
+.profile-actions button:hover {
+  background: #512da8;
+}
+
+.change-pwd-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-bottom: 7px;
+}
+.change-pwd-form input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid #b2becd;
+  background: #ede7f6;
+  font-size: 1rem;
+}
+.change-pwd-form input:focus {
+  outline: none;
+  border-color: #512da8;
+}
+
+.msg {
+  color: #512da8;
+  margin-top: 8px;
+  text-align: center;
+  font-weight: 500;
+}
+.error {
+  color: #d32f2f;
+  margin-top: 8px;
+  text-align: center;
+  font-weight: 500;
+}
+.profile-nav {
+  margin-top: 24px;
+  text-align: center;
+}
+.profile-nav button {
+  background: #2979ff;
+  color: #fff;
+  border-radius: 7px;
+  font-size: 1rem;
+  padding: 9px 18px;
+  border: none;
+  font-weight: 500;
+  margin: 0 7px;
+  cursor: pointer;
+  box-shadow: 0 2px 11px #2979ff33;
+  transition: background .19s;
+}
+.profile-nav button:hover {
+  background: #512da8;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  .profile-container { padding: 12px 4px; border-radius: 7px; }
+  .profile-nav button { padding: 7px 10px; font-size: .97rem; }
+}

@@ -1,93 +1,60 @@
 import React, { useState } from "react";
-import api from "../../api";
 import { useNavigate, Link } from "react-router-dom";
-import "./Signup.css"
+import api from "../../api";
 
 export default function Signup() {
   const [form, setForm] = useState({
     name: "",
+    age: "",
     email: "",
+    mobile: "",
+    address: "",
     aadharCardNumber: "",
-    password: ""
+    password: "",
+    role: "voter",
   });
   const [error, setError] = useState("");
-  const [msg, setMsg] = useState("");
   const navigate = useNavigate();
 
-  const change = e =>
-    setForm({ ...form, [e.target.name]: e.target.value });
+  const change = e => setForm({ ...form, [e.target.name]: e.target.value });
 
   const submit = async e => {
     e.preventDefault();
     setError("");
-    setMsg("");
     try {
-      await api.post("/user/signup", form);
-      setMsg("Signup successful! You can now log in.");
-      setTimeout(() => navigate("/login"), 1000); // Redirect after 1 sec
+      const res = await api.post("/user/signup", form);
+      localStorage.setItem("token", res.data.token);
+      localStorage.setItem("user", JSON.stringify(res.data.response));
+      navigate("/dashboard");
     } catch (err) {
-      setError(err?.response?.data?.error || "Signup error");
+      setError(err.response?.data?.error || "Signup error");
     }
   };
 
   return (
-    <div className="signup-container">
-      <form className="signup-form" onSubmit={submit}>
-        <h2>Sign Up</h2>
-        <div className="form-group">
-          <label>Name</label>
-          <input
-            name="name"
-            value={form.name}
-            onChange={change}
-            required
-            autoComplete="name"
-            placeholder="Your Name"
-          />
-        </div>
-        <div className="form-group">
-          <label>Email</label>
-          <input
-            name="email"
-            type="email"
-            value={form.email}
-            onChange={change}
-            required
-            autoComplete="email"
-            placeholder="you@email.com"
-          />
-        </div>
-        <div className="form-group">
-          <label>Aadhaar Number</label>
-          <input
-            name="aadharCardNumber"
-            value={form.aadharCardNumber}
-            onChange={change}
-            required
-            placeholder="1234 5678 9012"
-            pattern="\d{12}"
-            title="12 digit Aadhaar number"
-          />
-        </div>
-        <div className="form-group">
-          <label>Password</label>
-          <input
-            name="password"
-            type="password"
-            value={form.password}
-            onChange={change}
-            required
-            autoComplete="new-password"
-            placeholder="Create password"
-          />
-        </div>
-        <button type="submit">Sign Up</button>
-        {error && <div className="error">{error}</div>}
-        {msg && <div className="success">{msg}</div>}
-        <div className="nav-link">
-          Already have an account? <Link to="/login">Log in</Link>
-        </div>
-      </form>
-    </div>
+    <form onSubmit={submit} style={{ maxWidth: 350, margin: "40px auto", padding: 20, boxShadow: "0 0 6px #ccc" }}>
+      <h2 style={{ textAlign: "center" }}>Signup</h2>
+      <input name="name" placeholder="Name" value={form.name} onChange={change} required style={{ width: "100%", margin: "8px 0", padding: 7 }} />
+      <input name="age" placeholder="Age" value={form.age} onChange={change} required type="number" style={{ width: "100%", margin: "8px 0", padding: 7 }} />
+      <input name="email" placeholder="Email" value={form.email} onChange={change} type="email" style={{ width: "100%", margin: "8px 0", padding: 7 }} />
+      <input name="mobile" placeholder="Mobile" value={form.mobile} onChange={change} type="text" style={{ width: "100%", margin: "8px 0", padding: 7 }} />
+      <input name="address" placeholder="Address" value={form.address} onChange={change} required style={{ width: "100%", margin: "8px 0", padding: 7 }} />
+      <input name="aadharCardNumber" placeholder="Aadhaar Card Number" value={form.aadharCardNumber} onChange={change} required style={{ width: "100%", margin: "8px 0", padding: 7 }} />
+      <input name="password" placeholder="Password" value={form.password} onChange={change} type="password" required style={{ width: "100%", margin: "8px 0", padding: 7 }} />
+      <label>
+        Role:
+        <select name="role" value={form.role} onChange={change} style={{ width: "100%", margin: "8px 0", padding: 7 }}>
+          <option value="voter">Voter</option>
+          <option value="admin">Admin</option>
+        </select>
+      </label>
+      <button type="submit" style={{ width: "100%", margin: "12px 0", padding: 8 }}>
+        Signup
+      </button>
+      {error && <div style={{ color: "red", marginBottom: 8 }}>{error}</div>}
+      <p style={{ textAlign: "center", marginTop: 16 }}>
+        Already have an account? <Link to="/login">Login</Link>
+      </p>
+    </form>
   );
 }

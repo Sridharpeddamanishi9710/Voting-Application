@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:3000", // your backend
+  baseURL: "https://voting-application-uwf6.onrender.com/", // your backend
 });
 
 api.interceptors.request.use((config) => {

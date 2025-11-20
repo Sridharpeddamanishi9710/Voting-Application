@@ -199,6 +199,8 @@ router.post('/login', async (req, res) => {
 router.post('/vote', jwtAuthMiddleware, async (req, res) => {
     try {
         const { candidateId } = req.body;
+        console.log("User before voting:", user); // Should print a user with id matching your target voter
+
         const userId = req.user.id;
 
         console.log("Vote POST called. candidateId:", candidateId, "userId:", userId);
@@ -233,6 +235,7 @@ router.post('/vote', jwtAuthMiddleware, async (req, res) => {
         // UPDATE USER'S isVoted TO TRUE - THIS IS CRITICAL!
         user.isVoted = true;
         await user.save();
+        console.log("User after voting:", user); // Should show isVoted: true
 
         console.log("Vote recorded successfully. User isVoted:", user.isVoted);
         return res.status(200).json({ message: 'Vote recorded successfully' });
